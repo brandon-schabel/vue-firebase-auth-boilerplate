@@ -1,6 +1,6 @@
+import {initializeApp} from 'firebase/'
 
-import firebase from 'firebase';
-import 'firebase/firestore'
+
 
 const config = {
   projectId: process.env.VUE_APP_PROJECT_ID,
@@ -9,6 +9,7 @@ const config = {
   authDomain: process.env.VUE_APP_AUTH_DOMAIN
 };
 
-firebase.initializeApp(config);
-
-export const db = firebase.firestore()
+export const app = initializeApp(config);
+export const db = app.firestore();
+export const namesRef = db.collection('names');
+export const auth = app.auth();
