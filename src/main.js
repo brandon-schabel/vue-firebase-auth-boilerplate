@@ -29,7 +29,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-auth.onAuthStateChanged(user => {
+auth.onAuthStateChanged(() => {
   new Vue({
     render: h => h(App),
     router,

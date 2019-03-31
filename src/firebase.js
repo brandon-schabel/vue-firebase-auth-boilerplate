@@ -1,4 +1,4 @@
-import {initializeApp} from 'firebase/'
+import firebase from 'firebase'
 
 
 
@@ -9,7 +9,8 @@ const config = {
   authDomain: process.env.VUE_APP_AUTH_DOMAIN
 };
 
-export const app = initializeApp(config);
+export const app = firebase.initializeApp(config);
 export const db = app.firestore();
 export const namesRef = db.collection('names');
 export const auth = app.auth();
+export const googleSignInProvider = new firebase.auth.GoogleAuthProvider;

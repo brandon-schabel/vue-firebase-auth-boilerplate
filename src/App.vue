@@ -1,48 +1,32 @@
 <template>
   <div id="app" class="content">
-    <div>
-      <label>Name:</label>
-      <input type="text" v-model="name">
-      <button @click="submitName()">Add</button>
-    </div>
-    <div>
-      <ul>
-        <li v-for="(personName,idx) of names" :key="idx">
-          {{personName.id}}
-          {{personName.name}}
-        </li>
-      </ul>
+    <div class="container">
+      <nav-main></nav-main>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
 import { namesRef } from './firebase'
+import Header from './components/Header.vue'
+
 export default {
   name: "app",
-  data() {
-    return {
-      name: "Paul"
-    };
+  components: {
+    navMain: Header
   },
+
   methods: {
-    submitName() {
-      namesRef.add({name: this.name, edit: false})
+    setUser: function() {
+      this.$store.dispatch('setUser');
     }
   },
-  firestore: {
-    names: namesRef
+  created() {
+    // when the app is created run the set user method
+    // this uses Vuex to check if a user is signed in
+    // check out mutations in the store.js file
+    this.setUser();
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
