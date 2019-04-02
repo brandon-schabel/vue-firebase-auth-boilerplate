@@ -5,6 +5,7 @@
       <router-link to="dashboard" v-if="user">Dashboard</router-link>
       <router-link to="sign-in" v-if="!user">Sign-in</router-link>
       <router-link to="sign-up" v-if="!user">Sign-up</router-link>
+      <router-link to="create-name" v-if="user">Create Name</router-link>
       <a v-on:click="signOut" v-if="user">Sign-out</a>
     </nav>
   </header>
@@ -20,9 +21,9 @@ export default {
     }
   },
   methods: {
-    signOut: () => {
+    signOut: function(){
       auth.signOut().then(() => {
-        this.$router.replace("sign-in");
+        this.$router.push("sign-in");
       });
     }
   }

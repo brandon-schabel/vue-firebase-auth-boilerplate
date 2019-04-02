@@ -27,6 +27,7 @@ export default {
     // this uses Vuex to check if a user is signed in
     // check out mutations in the store.js file
     this.setUser();
+    console.log(this)
   }
 };
 </script>

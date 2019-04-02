@@ -39,14 +39,14 @@
 import { auth, googleSignInProvider} from "../firebase";
 
 export default {
-  data: () => {
+  data: function(){
     return {
       email: "",
       password: ""
     };
   },
   methods: {
-    signIn: () => {
+    signIn: function() {
       auth.signInWithEmailAndPassword(this.email, this.password).then(
         user => {
           this.$router.replace("dashboard");
@@ -56,7 +56,7 @@ export default {
         }
       );
     },
-    googleSignIn: () => {
+    googleSignIn: function() {
       auth.signInWithPopup(googleSignInProvider).then(user => {
         this.$router.replace("dashboard");
       }),
