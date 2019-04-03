@@ -19,6 +19,7 @@
 
 <script>
 import { namesRef } from '../firebase'
+import { bindRefToState } from '../helpers.js'
 export default {
   data() {
     return {
@@ -39,18 +40,7 @@ export default {
     names: namesRef
   },
   created() {
-    namesRef.onSnapshot(res => {
-      const changes = res.docChanges()
-
-      changes.forEach(change => {
-        if(change.type === 'added') {
-          this.names.push({
-            ...change.doc.data(),
-            id: change.doc.id
-          })
-        }
-      })
-    })
+    //this.names = bindRefToState(namesRef, this.names)
   }
 };
 </script>
