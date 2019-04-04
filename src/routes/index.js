@@ -1,4 +1,3 @@
-import HelloWorld from "../components/HelloWorld"
 import SignIn from "../components/SignIn"
 import CreateName from "../components/CreateName"
 import Home from "../components/Home.vue"
@@ -11,11 +10,6 @@ import Dashboard from "../components/Dashboard.vue"
 // For a the most basic route just set
 // the path & component to load
 export const routes = [
-  {
-    path: "/",
-    name: "HelloWorld",
-    component: HelloWorld
-  },
   {
     path: "/sign-in",
     name: "signIn",
