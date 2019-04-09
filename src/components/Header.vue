@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    signOut: function(){
+    signOut: function() {
       auth.signOut().then(() => {
         this.$router.push("sign-in");
       });

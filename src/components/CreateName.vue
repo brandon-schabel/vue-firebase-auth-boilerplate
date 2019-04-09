@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <div>
       <label>Name:</label>
       <input type="text" v-model="name">
@@ -10,7 +10,9 @@
         <li v-for="(personName,idx) of this.names" :key="idx">
           {{personName.id}}
           {{personName.name}}
-          <button @click="deleteName(personName.id)">Delete</button>
+          <button
+            @click="deleteName(personName.id)"
+          >Delete</button>
         </li>
       </ul>
     </div>
@@ -18,8 +20,8 @@
 </template>
 
 <script>
-import { namesRef } from '../firebase'
-import { bindRefToState } from '../helpers.js'
+import { namesRef } from "../firebase";
+// import { bindRefToState } from "../helpers.js";
 export default {
   data() {
     return {
@@ -29,11 +31,10 @@ export default {
   },
   methods: {
     submitName() {
-      namesRef.add({name: this.name, edit: false})
-      console.log(this.names)
+      namesRef.add({ name: this.name, edit: false });
     },
     deleteName(id) {
-      namesRef.doc(id).delete()
+      namesRef.doc(id).delete();
     }
   },
   firestore: {

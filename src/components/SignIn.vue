@@ -28,18 +28,16 @@
       </div>
     </div>
     <div>
-      <button @click="googleSignIn">
-        Google Sign In
-      </button>
+      <button @click="googleSignIn">Google Sign In</button>
     </div>
   </section>
 </template>
 
 <script>
-import { auth, googleSignInProvider} from "../firebase";
+import { auth, googleSignInProvider } from "../firebase";
 
 export default {
-  data: function(){
+  data: function() {
     return {
       email: "",
       password: ""
@@ -60,9 +58,9 @@ export default {
       auth.signInWithPopup(googleSignInProvider).then(user => {
         this.$router.replace("dashboard");
       }),
-      error => {
-        alert(error.message)
-      }
+        error => {
+          alert(error.message);
+        };
     }
   }
 };
